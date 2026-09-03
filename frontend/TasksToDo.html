@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            
+        }
+
+        button {
+            transition: filter 0.2s;
+        }
+
+        button:hover {
+            filter: brightness(85%);
+        }
+        p {
+            margin: 0;
+            font-family: 'Gill Sans MT';
+        }
+
+        .main-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        
+
+        .task-name {
+            display: inline-block;
+        }
+        .input-txt{
+            width:600px;
+            height: 50px;
+            font-size: 30px;
+            border-color: violet;
+            border-radius: 4px;
+            border-style: solid;
+            border-width: 2px;
+            padding-left: 8px;
+        }
+
+        .input-txt:focus {
+            outline: none;
+            border-color: violet;
+        }
+
+        .input-button{
+            height: 58px;
+            width:110px;
+            font-size: 20px;
+            padding-left: 8px;
+            padding-right: 8px;
+            background-color: violet;
+            border:0;
+            color:white;
+            border-radius: 4px;
+
+        }
+
+        .input-field{
+            display: flex;
+            
+        }
+
+        .task-head{
+            margin-top: 30px;
+            display: flex;
+            width:500px;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            
+        }
+        
+        .task-head button{
+            width:120px;
+            height: 40px;
+
+        }
+
+        .task-list{
+            width: 750px ;
+        }
+
+        .task-list-head{
+            font-size: 30px;
+            color: blueviolet;
+            margin-bottom: 15px;
+        }
+
+        .task-item{
+            background-color: rgb(223, 203, 241);
+            border-width: 2px;
+            border-radius: 4px;
+            border-color: rgb(140, 125, 153);
+            padding:4px 8px;
+            border-style: solid;
+            display: flex;
+            
+            margin-top: 10px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-name{
+            font-size: 25px;
+            overflow-wrap: anywhere;
+            
+        }
+
+        .task-item-left{
+            min-width: 0;
+            flex:1;
+            display: flex;
+            align-items: center;
+        }
+
+        .task-item-right {
+            flex-shrink: 0;
+        }
+
+        .task-item-left input{
+            margin-right: 10px;
+        }
+
+        .task-stats{
+            margin-top: 30px;
+            font-size: 35px;
+            font-weight: 100;
+            background-color: rgb(243, 246, 163);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border-color: rgb(165, 147, 42);
+            border-width: 2px;
+            border-style: solid;
+        }
+
+        .clear-btn{
+            margin-top: 20px;
+            width: 100px;
+            height: 40px;
+            font-size: 18px;
+            padding-left: 12px;
+            padding-right: 12px;
+            background-color: rgb(255, 81, 1);
+            border:none;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .comp-btn,.undo-btn,.delete-btn{
+            width: 80px;
+            height: 40px;
+            margin-left: 6px;
+            font-size: 14px;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .delete-btn{
+            background-color: red;
+        }
+
+        .comp-btn{
+            background-color: green;
+        }
+
+        .undo-btn{
+            background-color: rgb(65, 65, 240);
+        }
+
+        .title {
+            margin-top: 40px;
+            font-size: 50px;
+            font-family: 'Gill Sans MT';
+            margin-bottom: 30px;
+            
+        }
+        
+        .user-header{
+            background-color: blueviolet;
+            width:800px;
+            display: flex;
+            margin-bottom: 30px;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            
+        }
+
+        .user-header .user{
+            margin-left: 30px;
+            width:64px;
+            overflow-wrap:normal;
+        }
+        .user-header button{
+            width:64px;
+            margin-right: 30px;
+            height:50px;
+            width: 80px;
+            font-size: 15px;
+            background-color: brown;
+            border-radius: 3px;
+            color: white;
+        }
+
+        /*ChatGPT CSS
+
+
+
+        **/
+        /* =========================
+   LANDING PAGE
+   ========================= */
+
+        .landing-page {
+            width: 100%;
+            text-align: center;
+            font-family: 'Gill Sans MT';
+        }
+
+
+        /* HERO */
+
+        .hero {
+            padding: 90px 20px 100px;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: 58px;
+            line-height: 1.1;
+            color: blueviolet;
+        }
+
+        .hero p {
+            margin-top: 25px;
+            font-size: 21px;
+            color: rgb(80, 80, 80);
+        }
+
+        .login-btn {
+            margin-top: 35px;
+            padding: 14px 28px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: violet;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        /* HOW IT WORKS */
+
+        .how-it-works {
+            padding: 70px 20px;
+            background-color: rgb(243, 238, 248);
+        }
+
+        .how-it-works h2 {
+            margin: 0 0 50px;
+            font-size: 38px;
+            color: blueviolet;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .step {
+            width: 220px;
+            padding: 30px 20px;
+            background-color: rgb(223, 203, 241);
+            border: 2px solid rgb(140, 125, 153);
+            border-radius: 6px;
+        }
+
+        .step span {
+            font-size: 18px;
+            font-weight: bold;
+            color: blueviolet;
+        }
+
+        .step h3 {
+            margin: 15px 0 10px;
+            font-size: 25px;
+            color: rgb(60, 40, 80);
+        }
+
+        .step p {
+            font-size: 17px;
+            line-height: 1.5;
+            color: rgb(70, 70, 70);
+        }
+
+
+        /* CTA */
+
+        .cta {
+            padding: 90px 20px;
+        }
+
+        .cta h2 {
+            margin: 0;
+            font-size: 40px;
+            color: blueviolet;
+        }
+
+        .cta p {
+            margin-top: 15px;
+            font-size: 19px;
+            color: rgb(80, 80, 80);
+        }
+
+        .cta-btn {
+            margin-top: 25px;
+            width: 150px;
+            height: 48px;
+            font-size: 17px;
+            font-weight: bold;
+            color: white;
+            background-color: violet;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+   <script type="text/babel">
+
+        function LandingPage({ login }) {
+        return (
+            <div className="landing-page">
+
+                {/* Hero */}
+                <section className="hero">
+                    <h1>Organize your tasks.<br />Get things done.</h1>
+
+                    <p>
+                        A simple and focused task manager to keep
+                        your work organized.
+                    </p>
+
+                    <button className="login-btn" onClick={login}>
+                        Login with Google
+                    </button>
+                </section>
+
+
+                {/* How It Works */}
+                <section className="how-it-works">
+
+                    <h2>How It Works</h2>
+
+                    <div className="steps">
+
+                        <div className="step">
+                            <span>01</span>
+                            <h3>Sign In</h3>
+                            <p>
+                                Sign in securely with your Google account.
+                            </p>
+                        </div>
+
+                        <div className="step">
+                            <span>02</span>
+                            <h3>Add Tasks</h3>
+                            <p>
+                                Create tasks for the things you need to accomplish.
+                            </p>
+                        </div>
+
+                        <div className="step">
+                            <span>03</span>
+                            <h3>Get Things Done</h3>
+                            <p>
+                                Complete your tasks and keep track of your progress.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                {/* CTA */}
+                <section className="cta">
+
+                    <h2>Ready to get things done?</h2>
+
+                    <p>
+                        Start organizing your tasks today.
+                    </p>
+
+                    <button className="cta-btn" onClick={login}>
+                        Get Started
+                    </button>
+
+                </section>
+
+            </div>
+        );
+}
+        function TaskInput({ taskList, setTaskList }) {
+            const [input, setInput] = React.useState('');
+
+            function updateInput(event) {
+                setInput(event.target.value);
+
+            }
+
+            async function addTask() 
+            {
+                if (input.trim() === '') return;
+
+                const response = await fetch('http://localhost:8080/api/tasks', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: input.trim(),
+                        completed: false
+                    })
+                });
+
+                const newTask = await response.json();
+
+                setTaskList([
+                    ...taskList,
+                    newTask
+                ]);
+                setInput('');
+            }
+
+            function keyAction(event)
+            {
+                if(event.key==='Enter')
+                    addTask();
+                if(event.key==='Escape')
+                    setInput('');
+            }
+
+            return (
+                <div className='input-field'>
+                    <input className='input-txt' type='text'
+                        onChange={updateInput}
+                        onKeyDown={keyAction}
+                        value={input}
+                        placeholder='Enter a task...' />
+                    <button className='input-button'onClick={addTask}>Add Task</button>
+                </div>
+            );
+        }
+
+        function TaskHeader({ compCount, taskList, setFilter }) {
+
+            return (
+                <div className='task-head'>
+                    <button onClick={()=>setFilter('all')}>All ({taskList.length})</button>
+                    <button onClick={()=>setFilter('active')}>Active ({taskList.length - compCount})</button>
+                    <button onClick={()=>setFilter('completed')}>Completed ({compCount})</button>
+                </div>
+            );
+        }
+
+        function TaskList({ taskList, filteredTasks, setTaskList }) {
+
+            async function deleteTask(taskId) {
+                await fetch(
+                    `http://localhost:8080/api/tasks/${taskId}`,
+                    {
+                        method: 'DELETE',
+                        credentials: 'include'
+                    }
+                );
+                setTaskList(
+                    taskList.filter((task) => task.id !== taskId)
+                );
+            }
+
+            async function toggleTask(taskId) {
+
+                const task = taskList.find((task)=>task.id===taskId);
+                const response = await fetch(
+                `http://localhost:8080/api/tasks/${taskId}`,
+                {
+                    method: 'PUT',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: task.name,
+                        completed: !task.completed
+                    })
+                });
+
+                const updatedTask = await response.json();
+                setTaskList(taskList.map((task) => {
+
+                    if (task.id === taskId) {
+                        return updatedTask;
+                    }
+
+                    return task;
+                }));
+            }
+            return (
+                <div className='task-list'>
+                    <p className='task-list-head'>Tasks:</p>
+                    {filteredTasks.map((task) => {
+                        return (
+                            <div className = 'task-item' key={task.id}>
+                                <div className='task-item-left'>
+                                    <div>
+                                        <input type="checkbox" checked={task.completed} readOnly />
+                                    </div>
+                                    <div>
+                                        <p className='task-name'>{task.name}</p>
+                                    </div>
+                                
+                                </div>
+                                <div className='task-item-right'>
+                                    <button className={task.completed ?'undo-btn':'comp-btn'} onClick={() => toggleTask(task.id)}>{task.completed ? 'Undo' : 'Complete'}</button>
+                                    <button className='delete-btn' onClick={() => deleteTask(task.id)}>Delete</button>
+                                </div>
+                            </div>
+                        );
+                    }
+                    )}
+                </div>
+            );
+        }
+
+        function TaskStats({ taskList, compCount }) {
+            return (
+                <div className='task-stats'>
+                    <p>Active tasks :{taskList.length - compCount}</p>
+                    <p>Completed :{compCount}</p>
+                </div>
+            );
+        }
+        function App() {
+            const [currentUser, setCurrentUser] = React.useState(null);
+            const [taskList, setTaskList] = React.useState([]);
+            const [filter,setFilter] = React.useState('all');
+            const [authLoading, setAuthLoading] = React.useState(true);
+            let filteredTasks = taskList;
+            if (filter === 'active') {
+                filteredTasks = taskList.filter((task) => !task.completed);
+            }
+            if (filter === 'completed') {
+                filteredTasks = taskList.filter((task) => task.completed);
+            }
+
+            /*React.useEffect(() => {
+                localStorage.setItem(
+                    'tasks',
+                    JSON.stringify(taskList)
+                );
+            }, [taskList]);*/
+
+            React.useEffect(()=>{
+                fetch(`http://localhost:8080/api/auth/me`,
+                    {
+                        credentials:'include'
+                    }
+                )
+                .then(response=>{
+                    if(!response.ok){
+                        throw new Error('Not logged in');
+                    }
+                    return response.json();
+
+                })
+                .then(user=>{
+                    setCurrentUser(user);
+                })
+                .catch(()=>{
+                    setCurrentUser(null);
+                })
+                .finally(()=>{
+                    setAuthLoading(false);
+                });
+            },[]);
+
+            React.useEffect(()=>{
+                fetch('http://localhost:8080/api/tasks',{
+                    credentials:'include'
+                })
+                .then(response=>response.json())
+                .then(tasks=>{
+                    setTaskList(tasks);
+                });
+            },[]);
+
+            let compCount = 0;
+            for (const task of taskList) {
+                if (task.completed)
+                    compCount++;
+            }
+
+            async function clearAllTasks() {
+
+                await fetch(
+                    'http://localhost:8080/api/tasks',
+                    {
+                        method: 'DELETE',
+                        credentials: 'include'
+                    }
+                );
+
+                setTaskList([]);
+            }
+
+            function login() {
+                window.location.href =
+                    'http://localhost:8080/oauth2/authorization/google';
+            }
+
+            function logout() {
+                window.location.href = 'http://localhost:8080/logout';
+            }
+
+            if (authLoading) 
+            {
+                return (
+                    <div className="main-page">
+                        <h1>Loading...</h1>
+                    </div>
+                );
+            }
+            return (
+                <div className='main-page'>
+                    {currentUser ? (
+                    <>    
+                        
+                        <div className="user-header">
+                            {currentUser && (
+                                <p className='user'>Welcome, {currentUser.name}</p>
+                            )}
+                            <p className="title">My Task Dashboard</p>
+                            <button onClick={logout}>
+                                Logout
+                            </button>
+                        </div>
+                        <TaskInput taskList={taskList} setTaskList={setTaskList} />
+                        <TaskHeader taskList={taskList} compCount={compCount} setFilter={setFilter}/>
+                        <TaskList taskList={taskList}
+                        filteredTasks={filteredTasks}
+                        setTaskList={setTaskList}  
+                        />
+                        <TaskStats taskList={taskList} compCount={compCount} />
+                        <button className='clear-btn' onClick={clearAllTasks}>Clear All</button>
+                        
+                    </>    
+                    ):(
+                    <>
+                        <LandingPage login={login} />
+                    </>                        
+                    )}
+                    
+                </div>
+            );
+        }
+
+        const container = document.querySelector('.js-container');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />)
+    </script>
+</body>
+
+</html>
