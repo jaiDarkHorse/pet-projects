@@ -1,0 +1,33 @@
+.cat-cont{
+    margin: 0px auto 0;
+    padding: 20px;
+    width: 800px;
+}
+
+.cat-title p{
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    margin-left: 30px;
+
+}
+
+.cat-item-cont{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-items: center;
+    
+}
+
+.cat-item{
+    padding: 15px;
+    border-radius: 12px;
+    background-color: #7fffd4;
+    width: 130px;
+}
+
+.cat-item span{
+    font-weight: 600;
+    font-size: 20px;
+}

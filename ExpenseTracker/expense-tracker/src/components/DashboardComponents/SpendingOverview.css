@@ -1,0 +1,52 @@
+.ov{
+    width: 1100px;
+    margin: 0px auto 0px;
+}
+.ov-title{
+    font-size: 40px;
+    font-family:'Franklin Gothic Medium';
+    margin-bottom: 15px;
+}
+
+.ov-cont{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    gap:50px;
+}
+
+.ov-cont-item{
+    background-color: #7fffd4;
+    width:230px;
+    height: 130px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 12px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+}
+
+.ov-cont-item p{
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.ov-cont-item span{
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 15px;
+    transition: color 0.2s ease;
+
+}
+
+.ov-cont-item:hover{
+    transform: translateY(-5px);
+    background-color: #64c9a7;
+}
+
+.ov-cont-item:hover span{
+    color: white;
+}
